@@ -1,4 +1,4 @@
-package com.thecookielegend.bank.controller;
+package com.thecookielegend.bank.web.controllers;
 
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
