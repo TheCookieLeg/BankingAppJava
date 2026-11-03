@@ -1,29 +1,19 @@
 package com.thecookielegend.bank.web.controllers;
 
 import java.util.List;
+
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
 
-@RestController
+@Controller
 public class UserController {
-    @GetMapping("/hello")
-    public String hello(@RequestParam(defaultValue = "World") String name) {
-        int[] array = new int[20];
-        for (int i = 0; i < 20; i++) {
-            array[i] = i;
-        }
-        String s = arrayToString(array);
-        return String.format("Numbers! %s", s);
+    @GetMapping("/greeting")
+    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+        model.addAttribute("name", name);
+        return "greeting";
     }
 
-
-    private String arrayToString(int[] arr) {
-        StringBuilder builder = new StringBuilder("[ ");
-        for (var i : arr) {
-            builder.append(i).append(", ");
-        }
-        builder.append("]");
-        return builder.toString();
-    }
 }
